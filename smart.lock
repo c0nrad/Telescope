@@ -2,6 +2,7 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
+      "cookie": {},
       "momentjs": {},
       "crypto-base": {},
       "crypto-md5": {},
@@ -15,6 +16,11 @@
       "subs-manager": {}
     },
     "packages": {
+      "cookie": {
+        "git": "https://github.com/chuangbo/meteor-cookie.git",
+        "tag": "v1.0.2.3",
+        "commit": "f39620ef5650642c38f51b512d82a9b34924b609"
+      },
       "momentjs": {
         "git": "https://github.com/crapthings/meteor-momentjs.git",
         "tag": "v2.1.0.2",
