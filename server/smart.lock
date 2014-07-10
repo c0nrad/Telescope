@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "cookie": {}
+    },
+    "packages": {
+      "cookie": {
+        "git": "https://github.com/chuangbo/meteor-cookie.git",
+        "tag": "v1.0.2.3",
+        "commit": "f39620ef5650642c38f51b512d82a9b34924b609"
+      }
+    }
+  }
+}

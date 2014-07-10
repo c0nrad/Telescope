@@ -32,10 +32,7 @@ Template[getTemplate('nav')].helpers({
 });
 
 Template[getTemplate('nav')].rendered=function(){
-
-  if(!Meteor.user()){
-    $('.login-link-text').text("Sign Up/Sign In");
-  }else{
+  if(Meteor.user()){
     $('#login-buttons-logout').before('<a href="/users/'+Meteor.user().slug+'" class="account-link button">View Profile</a>');
     $('#login-buttons-logout').before('<a href="/account" class="account-link button">Edit Account</a>');
   }

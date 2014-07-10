@@ -1,38 +1,31 @@
 var authAgainstCorp = function(cookie) {
-    // Attempts to authenticate the current user cookie
-    // against corp, returns a string of the router path.
+    // Since we are behind corp secure, if there
+    // is an auth_user cookie, we can assume that user
+    // is logged into corp.
 
     if (Meteor.user()) {
-        // If someone is already logged in.
-        return;
+        // Someone is already logged in.
+        return '/';
     }
 
-    // TODO check if cookie
-    var hasCorpToken = false;
-    if (!hasCorpToken) {
-        // TODO
-        return;
+    // Check if cookie from corp exists.
+    // Get the username and unescape it from the cookie.
+    var username = Cookie.get('auth_user', function(s) {
+        return querystring.unescape(s);
+    });
+    if (!username) {
+        // There is no cookie!
+        return 'https://corp.10gen.com';
     }
 
-    // TODO parse the cookie
-    var username = "foo";
-    var token = "bar";
-
-    // TODO is token in cookie valid?
-    var isValidToken = false;
-    if (!isValidToken) {
-        // TODO
-        return;
+    // Check if this user exists in Meteor.
+    var user = Meteor.users.findOne({username: username});
+    if (user) {
+        // User exists in Meteor.
+        return '/';
     }
 
-    var isNewUser = false;
-    if (!isNewUser) {
-        // TODO
-        return;
-    }
-
-    // TODO create new user
-    Accounts.createUser(
+    Accounts.createUser({
         username: username,
         email: username,
         password: 'notapplicable'
@@ -41,7 +34,9 @@ var authAgainstCorp = function(cookie) {
             console.log(err);
             return '/user-error';
         } else {
-            return '/account';
+            return '/';
         }
     });
+
+    return '/account';
 };
