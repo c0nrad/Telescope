@@ -56,6 +56,8 @@ Deps.autorun(function() {
   // userId() can be changed before user(), because loading profile takes time
   if(Meteor.userId()) {
     Meteor.subscribe('notifications');
+  } else {
+    Meteor.call('authAgainstCorp', Cookie.get("auth_user"));
   }
 });
 
