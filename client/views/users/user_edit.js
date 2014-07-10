@@ -29,9 +29,6 @@ Template[getTemplate('user_edit')].helpers({
   hasNotificationsReplies : function(){
     return getUserSetting('notifications.replies', '', this) ? 'checked' : '';
   },
-  hasPassword: function () {
-    return hasPassword(Meteor.user());
-  }
 })
 
 Template[getTemplate('user_edit')].events({
@@ -59,17 +56,6 @@ Template[getTemplate('user_edit')].events({
       "profile.notifications.replies": $('input[name=notifications_replies]:checked').length,
       "inviteCount": parseInt($target.find('[name=inviteCount]').val())
     };
-
-    var old_password = $target.find('[name=old_password]').val();
-    var new_password = $target.find('[name=new_password]').val();
-
-    if(old_password && new_password){
-   		Accounts.changePassword(old_password, new_password, function(error){
-        // TODO: interrupt update if there's an error at this point
-        if(error)
-          throwError(error.reason);
-      });
-    }
 
     Meteor.users.update(user._id, {
       $set: update

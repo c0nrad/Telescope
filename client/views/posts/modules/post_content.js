@@ -60,9 +60,6 @@ Template[getTemplate('postContent')].helpers({
   isApproved: function(){
     return this.status == STATUS_APPROVED;
   },
-  viaTwitter: function () {
-    return !!getSetting('twitterAccount') ? 'via='+getSetting('twitterAccount') : '';
-  }
 });
 
 Template[getTemplate('postContent')].events({

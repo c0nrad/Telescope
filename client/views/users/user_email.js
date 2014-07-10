@@ -18,7 +18,7 @@ Template[getTemplate('user_email')].events({
 
     // TODO: enable change email
     var email = $target.find('[name=email]').val();
-    
+
     Meteor.users.update(user._id, {
       $set: update
     }, function(error){

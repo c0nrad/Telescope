@@ -15,12 +15,6 @@
         </div>
         <p class="note">Profile URL: {{profileUrl}}</p>
       </div>
-<!--       <div class="control-group">
-        <label>Email</label>
-        <div class="controls">
-          <input id="email" name="email" disabled="disabled" type="text" value="{{email}}" />
-        </div>
-      </div> -->
       <div class="control-group">
         <label>{{i18n "Display Name"}}</label>
         <div class="controls">
@@ -30,7 +24,7 @@
       <div class="control-group">
         <label>{{i18n "Email"}}</label>
         <div class="controls">
-          <input name="email" type="text" value="{{userEmail}}" />
+          <input name="email" disabled="disabled" type="text" value="{{userEmail}}" />
         </div>
       </div>
       <div class="control-group">
@@ -55,17 +49,6 @@
           <input name="site" type="text" value="{{profile.site}}" />
         </div>
       </div>
-      {{#if hasPassword}}
-        <h3>{{i18n "Change Password?"}}</h3>
-        <div class="control-group">
-          <label>{{i18n "Old Password"}}</label>
-          <div class="controls"><input name="old_password" type="password" value="" /></div>
-        </div>
-        <div class="control-group">
-          <label>{{i18n "New Password"}}</label>
-          <div class="controls"><input name="new_password" type="password" value="" /></div>
-        </div>
-      {{/if}}
       <div class="control-group">
         <label class="control-label">{{i18n "Email Notifications"}}</label>
         <div class="controls">
@@ -95,7 +78,6 @@
       </div>
       {{/if}}
       <div class="form-actions">
-        <a href="/forgot_password">{{i18n "Forgot password?"}}</a>
         <input type="submit" class="button" value="{{i18n "Submit"}}" />
       </div>
     </form>

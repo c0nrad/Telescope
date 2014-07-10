@@ -90,9 +90,6 @@ addToMailChimpList = function(user){
 };
 
 Meteor.methods({
-  changeEmail: function(newEmail) {
-    Meteor.users.update(Meteor.userId(), {$set: {emails: [{address: newEmail}]}});
-  },
   numberOfPostsToday: function(){
     console.log(numberOfItemsInPast24Hours(Meteor.user(), Posts));
   },
