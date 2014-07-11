@@ -26,6 +26,9 @@ Template[getTemplate('nav')].helpers({
   canPost: function(){
     return canPost(Meteor.user());
   },
+  displayName: function(){
+    return getDisplayName(Meteor.user());
+  },
   requirePostsApproval: function(){
     return getSetting('requirePostsApproval');
   }
