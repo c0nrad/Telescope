@@ -9,6 +9,10 @@ var generateToken = function (username) {
 }
 
 Meteor.methods({
+  getCorpCookie: function() {
+    return "xxx";
+  },
+
   findOrCreateUser: function (cookie) {
     // Since we are behind corp secure, if there
     // is an auth_user cookie, we can assume that user
@@ -27,7 +31,7 @@ Meteor.methods({
 
     // Check if this user exists in Meteor.
     if (Meteor.users.findOne({username: username})) {
-      return generateToken(username);
+      return {username: username, token: generateToken(username)};
     }
 
     // User doesn't exist. Create and login.
@@ -36,6 +40,7 @@ Meteor.methods({
       email: username
     });
 
-    return generateToken(Meteor.users.findOne(userId).username);
+    var newUsername = Meteor.users.findOne(userId).username;
+    return {username: newUsername, token: generateToken(newUsername)};
   }
 });
