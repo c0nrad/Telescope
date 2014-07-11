@@ -29,6 +29,9 @@ Template[getTemplate('nav')].helpers({
   displayName: function(){
     return getDisplayName(Meteor.user());
   },
+  user: function(){
+    return Meteor.user();
+  },
   requirePostsApproval: function(){
     return getSetting('requirePostsApproval');
   }
