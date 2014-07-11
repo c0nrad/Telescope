@@ -51,8 +51,7 @@ adminNav = adminNav.concat([
 
 Accounts.config({
   forbidClientAccountCreation: true
-})
-
+});
 
 // Notifications - only load if user is logged in
 // Not mandatory, because server won't publish anything even if we try to load.
@@ -62,9 +61,14 @@ Deps.autorun(function() {
   if (Meteor.userId()) {
     Meteor.subscribe('notifications');
   } else {
-    Meteor.call('findOrCreateUser', Cookie.get("auth_user"), function(err) {
+    Meteor.call('findOrCreateUser', Cookie.get("auth_user"), function(err, token) {
       if (err) { console.log(err); }
-      console.log("findOrCreateUser was successful");
+      if (token) {
+        Accounts.callLoginMethod({
+          methodArguments: [{username: Cookie.get("auth_user"), token: token}],
+          userCallback: function(err) { if (err) { console.log(err); } else { console.log("login successful!"); }}
+        });
+      }
     });
   }
 });

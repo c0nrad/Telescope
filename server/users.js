@@ -1,3 +1,20 @@
+Accounts.registerLoginHandler(function(loginRequest) {
+    if (!loginRequest.username || !loginRequest.token) {
+        Meteor.Error("login request is malformed.");
+        return undefined;
+    }
+    var user = Meteor.users.findOne({username: loginRequest.username,
+                                     'services.resume.loginTokens': loginRequest.token});
+    if (!user) {
+        // Token is invalid.
+        console.log("token is invalid.");
+        return undefined;
+    }
+    return {userId: user._id, token: loginRequest.token.token};
+});
+
+Accounts.config({forbidClientAccountCreation: true});
+
 Accounts.onCreateUser(function(options, user){
   var userProperties = {
     profile: options.profile || {},
