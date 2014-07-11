@@ -49,15 +49,23 @@ adminNav = adminNav.concat([
   }   
 ]);
 
+Accounts.config({
+  forbidClientAccountCreation: true
+})
+
+
 // Notifications - only load if user is logged in
 // Not mandatory, because server won't publish anything even if we try to load.
 // Remember about Deps.autorun - user can log in and log out several times
 Deps.autorun(function() {
   // userId() can be changed before user(), because loading profile takes time
-  if(Meteor.userId()) {
+  if (Meteor.userId()) {
     Meteor.subscribe('notifications');
   } else {
-    Meteor.call('authAgainstCorp', Cookie.get("auth_user"));
+    Meteor.call('findOrCreateUser', Cookie.get("auth_user"), function(err) {
+      if (err) { console.log(err); }
+      console.log("findOrCreateUser was successful");
+    });
   }
 });
 
