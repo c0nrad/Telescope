@@ -10,7 +10,9 @@ var generateToken = function (username) {
 
 Meteor.methods({
   getCorpCookie: function() {
-    return "xxx";
+    var cookies = ServerCookies.retrieve(this.connection);
+    console.log('', cookies);
+    return cookies['auth_user'];
   },
 
   findOrCreateUser: function (cookie) {
