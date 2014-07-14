@@ -13,7 +13,8 @@
       "jquery-hotkeys": {},
       "marked": {},
       "bootstrap3-datepicker": {},
-      "subs-manager": {}
+      "subs-manager": {},
+      "server-cookies": {}
     },
     "packages": {
       "cookie": {
@@ -75,6 +76,11 @@
         "git": "https://github.com/meteorhacks/subs-manager.git",
         "tag": "v1.0.1",
         "commit": "38317052d1601002d4dff537e4e0f61d1aa36e6d"
+      },
+      "server-cookies": {
+        "git": "https://github.com/tbknl/meteor-server-cookies.git",
+        "tag": "v0.4.1",
+        "commit": "6f8d942e59e04a02d2d298e28a8541391ff6a740"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

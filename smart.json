@@ -12,6 +12,7 @@
     "jquery-hotkeys": {},
     "marked": {},
     "bootstrap3-datepicker": {},
-    "subs-manager": {}
+    "subs-manager": {},
+    "server-cookies": {}
   }
 }
