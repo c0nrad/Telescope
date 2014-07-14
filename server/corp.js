@@ -12,7 +12,7 @@ Meteor.methods({
   getCorpCookie: function() {
     var cookies = ServerCookies.retrieve(this.connection);
     console.log('', cookies);
-    return cookies['auth_user'];
+    return cookies['cookies']['auth_user'];
   },
 
   findOrCreateUser: function (cookie) {
