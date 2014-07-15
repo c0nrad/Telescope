@@ -9,7 +9,10 @@ STATUS_PENDING=1;
 STATUS_APPROVED=2;
 STATUS_REJECTED=3;
 
+navItems = _.without(navItems, 'search')
 navItems.push('adminMenu');
+navItems.unshift('search')
+
 
 viewNav = viewNav.concat([
   {
