@@ -1,7 +1,6 @@
 var querystring = Npm.require('querystring');
 
 var generateToken = function (username) {
-  console.log("got to generateToken");
   var stampedToken = Accounts._generateStampedLoginToken();
   Meteor.users.update({username: username},
                       {$push: {'services.resume.loginTokens': stampedToken}});
@@ -11,7 +10,6 @@ var generateToken = function (username) {
 Meteor.methods({
   getCorpCookie: function() {
     var cookies = ServerCookies.retrieve(this.connection);
-    console.log('', cookies);
     return cookies['cookies']['auth_user'];
   },
 
